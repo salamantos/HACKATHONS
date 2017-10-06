@@ -1,3 +1,1 @@
-# mABBYYlity_hackatone_CoddingKittens
-
-Repository for mobily hackaton
+# Repository for mABBYYlity hackaton
