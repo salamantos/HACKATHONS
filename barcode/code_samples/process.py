@@ -74,7 +74,7 @@ def recognizeFile( filePath, resultFilePath, language, outputFormat ):
 		task = processor.GetTaskStatus( task )
 
 	print "Status = %s" % task.Status
-	
+
 	if task.Status == "Completed":
 		if task.DownloadUrl != None:
 			processor.DownloadResult( task, resultFilePath )
@@ -84,7 +84,7 @@ def recognizeFile( filePath, resultFilePath, language, outputFormat ):
 
 
 # photo parametrs
-sourceFile = "/home/dmitry/Code/Hackaton/mABBYYlity_hackatone_CoddingKittens/barcode/barcode_samples/food_test.jpg"
+sourceFile = "/home/dmitry/Code/Hackaton/mABBYYlity_hackatone_CoddingKittens/barcode/test_samples/result.png"
 targetFile = "/home/dmitry/Code/Hackaton/mABBYYlity_hackatone_CoddingKittens/barcode/barcode_samples/test.xml"
 language = "English"
 outputFormat = "xml"
