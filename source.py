@@ -1,11 +1,17 @@
 # coding=utf-8
 
 import re
+from Queue import Queue
+
 from bot_commands import commands_list, understand_text
-#from storage import Storage
+# from storage import Storage
 from settings import *
 from secret_settings import BOT_TOKEN
 from Telegram_requests import *
+import threading
+import json
+import requests
+import image_recognition
 
 # Включение бота
 reset_messages = raw_input('Reset messages? y/n\n')
@@ -27,7 +33,7 @@ try:
 except FatalError as exc_txt:
     log_write(log_file, 'sys', exc_txt.txt)
     exit(1)
-#storage = Storage()
+# storage = Storage()
 offset = 0
 
 # Пропускаем пропущенные сообщения
@@ -47,82 +53,109 @@ log_write(log_file, 'sys', 'Successfully skipped messages')
 
 print "bot started\n"  # Используется, чтобы из консоли можно было понять, что старт прошел успешно
 
+def get_photo_url(photo):
+    first_req = 'https://api.telegram.org/bot' + BOT_TOKEN + '/getFile?file_id=' + photo.file_id
+    # print first_req
+    res_req = requests.get(first_req).content
+    x = json.loads(res_req)
+    return 'https://api.telegram.org/file/bot' + BOT_TOKEN + '/' + x['result']['file_path']
+
+
+def multi_thread_user_communication(user_id):
+    print user_id
+    try:
+        personal_update = threads[user_id].get()
+
+        # Получаем информацию о сообщении
+        offset, user_id, chat_id, username, text, message_date, photo = extract_update_info(personal_update)
+
+        print get_photo_url(photo)
+
+    #     give_answer = False  # Готов ли ответ
+    #
+    #     # Если не текстовое сообщение
+    #     if text is None:
+    #         text = u'(Нет текста)'
+    #         answer_text = NO_TEXT
+    #         give_answer = True
+    #
+    #     # Логи
+    #     try:
+    #         log_write(log_file, 'usr', personal_update, username, user_id)
+    #         log_write(log_file, 'usr', text.encode('utf-8'), username, user_id)
+    #     except UnicodeError:
+    #         log_write(log_file, 'usr', 'UnicodeError', username, user_id)
+    #
+    #     # Если получили комманду
+    #     if text[0] == '/' and not give_answer:
+    #         try:
+    #             if '@food_rate_bot' in text:
+    #                 text = re.sub(r'@food_rate_bot', '', text)  # Для групповых чатов
+    #             if '/answer' in text:
+    #                 text = re.sub(r'/answer ', '', text)
+    #                 answer_text, reply_markup = commands_list['/answer'](
+    #                     user_id in storage.data, storage,
+    #                     user_id, username, text)
+    #                 give_answer = True
+    #
+    #             if not give_answer:
+    #                 answer_text, reply_markup = commands_list.get(text)(
+    #                     user_id in storage.data, storage,
+    #                     user_id, username)
+    #
+    #         except TypeError:
+    #             if user_id not in storage.data:
+    #                 storage.new_user(username, user_id)
+    #             answer_text = NON_EXISTENT_COMMAND
+    #         give_answer = True
+    #
+    #     # Если текстовый запрос, пытаемся понять его
+    #     if not give_answer:
+    #         answer_text, reply_markup = understand_text(user_id in storage.data,
+    #                                                     storage,
+    #                                                     user_id, username, text)
+    #         give_answer = True
+    #
+    #     if storage.data[user_id]['question'] == 'answer_article_id' or \
+    #                     storage.data[user_id]['state'] == 'waitForStart':
+    #         del_msg = True
+    #     else:
+    #         del_msg = False
+    #     answer(log_file, storage, bot, user_id, chat_id, answer_text,
+    #            reply_markup, del_msg=False)
+    #
+    except ContinueError as exc_txt:
+        answer(log_file, bot, user_id, chat_id, exc_txt.txt,
+               reply_markup, del_msg=False)
+    except EasyError as exc_txt:
+        log_write(log_file, 'sys', exc_txt.txt)
+
+
+threads = dict()
 # Запуск прослушки Телеграма
 try:
     answer_text = u'<Заготовка под ответ>'
-    reply_markup = None
+    reply_markup = None  # Клавиатура
     while True:
-        # Отлавиваем только EasyError, остальное завершает работу
-        try:
+        try:  # Отлавиваем только EasyError, остальное завершает работу
             updates = get_updates_for_bot(bot, offset)  # Если нет обновлений, вернет пустой список
             for update in updates:
                 # Получаем информацию о сообщении
-                offset, user_id, chat_id, username, text, message_date = extract_update_info(
-                    update)
-                give_answer = False  # Готов ли ответ
+                offset, user_id, _, _, _, _, _ = extract_update_info(update)
 
-                # Если не текстовое сообщение
-                if text is None:
-                    text = u'(Нет текста)'
-                    answer_text = NO_TEXT
-                    give_answer = True
+                if user_id not in threads:
+                    threads[user_id] = Queue()
+                threads[user_id].put(update)
 
-                # Логи
-                try:
-                    log_write(log_file, 'usr', update, username, user_id)
-                    log_write(log_file, 'usr', text.encode('utf-8'), username, user_id)
-                except UnicodeError:
-                    log_write(log_file, 'usr', 'UnicodeError', username, user_id)
-
-                # Если получили комманду
-                if text[0] == '/' and not give_answer:
-                    try:
-                        if '@WikiReachBot' in text:
-                            text = re.sub(r'@WikiReachBot', '', text)
-                        if '/answer' in text:
-                            text = re.sub(r'/answer ', '', text)
-                            answer_text, reply_markup = commands_list['/answer'](
-                                user_id in storage.data, storage,
-                                user_id, username, text)
-                            give_answer = True
-
-                        if not give_answer:
-                            answer_text, reply_markup = commands_list.get(text)(
-                                user_id in storage.data, storage,
-                                user_id, username)
-
-                    except TypeError:
-                        if user_id not in storage.data:
-                            storage.new_user(username, user_id)
-                        answer_text = NON_EXISTENT_COMMAND
-                    give_answer = True
-
-                # Если текстовый запрос, пытаемся понять его
-                if not give_answer:
-                    answer_text, reply_markup = understand_text(user_id in storage.data,
-                                                                storage,
-                                                                user_id, username, text)
-                    give_answer = True
-
-                if storage.data[user_id]['question'] == 'answer_article_id' or \
-                                storage.data[user_id]['state'] == 'waitForStart':
-                    del_msg = True
-                else:
-                    del_msg = False
-                answer(log_file, storage, bot, user_id, chat_id, answer_text,
-                       reply_markup, del_msg=False)
+                t = threading.Thread(target=multi_thread_user_communication, args=[user_id])
+                t.start()
 
                 offset += 1  # id следующего обновления
-            answer(log_file, storage, bot, 0, 0, '', None)
-            time.sleep(0.01)
-        except ContinueError as exc_txt:
-            answer(log_file, storage, bot, user_id, chat_id, exc_txt.txt,
-                   reply_markup, del_msg=False)
 
+            time.sleep(0.01)
+        except Exception as e:
             offset += 1  # id следующего обновления
-        except EasyError as exc_txt:
-            offset += 1
-            log_write(log_file, 'sys', exc_txt.txt)
+            print e.message
 
 except KeyboardInterrupt:
     log_write(log_file, 'endl', '')
@@ -134,4 +167,4 @@ except Exception, exc_txt:
 finally:
     log_write(log_file, 'sys', '------------- Конец сеанса --------------\n\n\n')
     log_file.close()
-    #storage.close_db()
+    # storage.close_db()
