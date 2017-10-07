@@ -63,6 +63,7 @@ def send_answer_from_queue(log_file, bot, send_user_id, chat_id, send_answer_tex
 
 # Отвечает за отправку и временное хранение сообщений
 def answer(log_file, bot, send_user_id, chat_id, send_answer_text, reply_markup=None, del_msg=False):
+    print send_answer_text
     send_answer_from_queue(log_file, bot, send_user_id,
                            chat_id, send_answer_text,
                            reply_markup)

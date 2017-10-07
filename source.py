@@ -66,12 +66,14 @@ def multi_thread_user_communication(user_id):
 
         # Получаем информацию о сообщении
         offset, user_id, chat_id, username, text, message_date, photo = extract_update_info(personal_update)
+        print personal_update
 
         if photo is not None:
-            da = get_info_by_url(user_id, get_photo_url(photo))
+            result = bot.send_message(chat_id, PHOTO_IS_IN_PROCESS).wait()
+            print result
+            da = get_info_by_url(bot, chat_id, user_id, get_photo_url(photo))
         else:
-            print "Photo is None"
-            answer(log_file, bot, user_id, chat_id, 'Photo is None', reply_markup, del_msg=False)
+            answer(log_file, bot, user_id, chat_id, PHOTO_IS_NONE, reply_markup, del_msg=False)
             return
         for i in da:
             print i

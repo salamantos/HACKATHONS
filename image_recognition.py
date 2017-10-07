@@ -8,6 +8,8 @@ from buildWhiteAndBlack import *
 from process import *
 from pyzbar.pyzbar import decode
 
+from settings import *
+
 
 def recognize_img(user_id, link, n):
     urllib.urlretrieve(link, 'tmp/' + str(
@@ -47,7 +49,7 @@ def find_info(bar_code):
     return title, mark, mark_num
 
 
-def get_info_by_url(user_id, url):
+def get_info_by_url(bot, chat_id, user_id, url):
     if not os.path.exists('tmp/' + str(user_id)):
         os.makedirs('tmp/' + str(user_id))
     urllib.urlretrieve(url, 'tmp/' + str(
@@ -59,6 +61,9 @@ def get_info_by_url(user_id, url):
         s = tmp[0].data
         res = find_info(s)
         return res
+
+    bot.send_message(chat_id, WE_TRYING).wait()
+
     for i in range(3):
         recognize_img(user_id, url, i)
         tmp1 = find_bar_code(
