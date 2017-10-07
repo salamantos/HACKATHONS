@@ -8,10 +8,8 @@ from buildWhiteAndBlack import *
 from process import *
 from pyzbar.pyzbar import decode
 
-def recognize_img(user_id, link, n):
-    if not os.path.exists('tmp/' + str(user_id)):
-        os.makedirs('tmp/' + str(user_id))
 
+def recognize_img(user_id, link, n):
     urllib.urlretrieve(link, 'tmp/' + str(
         user_id) + project_settings.original_photo_url)
     to_white_and_black[n]('tmp/' + str(user_id) +
@@ -20,7 +18,6 @@ def recognize_img(user_id, link, n):
                               user_id) + project_settings.white_black_url)
     recognize_file('tmp/' + str(user_id) + project_settings.white_black_url,
                    'tmp/' + str(user_id) + project_settings.result_url, 'xml')
-
 
     return 0
 
@@ -51,13 +48,15 @@ def find_info(bar_code):
 
 
 def get_info_by_url(user_id, url):
+    if not os.path.exists('tmp/' + str(user_id)):
+        os.makedirs('tmp/' + str(user_id))
     urllib.urlretrieve(url, 'tmp/' + str(
         user_id) + project_settings.original_photo_url)
     img = cv2.imread('tmp/' + str(
         user_id) + project_settings.original_photo_url, 0)
-    tmp = [decode(img)]
+    tmp = decode(img)
     if len(tmp) != 0:
-        s = tmp[0][0].data
+        s = tmp[0].data
         res = find_info(s)
         return res
     for i in range(3):
