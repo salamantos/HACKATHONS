@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-# Usage: process.py <input file> <output file> [-language <Language>] [-pdf|-txt|-rtf|-docx|-xml]
+# NO CHANGE!!!
 
 import base64
 import urllib
@@ -11,7 +11,7 @@ import MultipartPostHandler
 
 
 class ProcessingSettings:
-    Language = "English"
+    Language = "EnglishUnitedStates"
     OutputFormat = "xml"
 
 

@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 import project_settings
 from buildWhiteAndBlack import *
 from process import *
-
+from pyzbar.pyzbar import decode
 
 def recognize_img(user_id, link, n):
     if not os.path.exists('tmp/' + str(user_id)):
@@ -20,6 +20,8 @@ def recognize_img(user_id, link, n):
                               user_id) + project_settings.white_black_url)
     recognize_file('tmp/' + str(user_id) + project_settings.white_black_url,
                    'tmp/' + str(user_id) + project_settings.result_url, 'xml')
+
+
     return 0
 
 
@@ -49,13 +51,25 @@ def find_info(bar_code):
 
 
 def get_info_by_url(user_id, url):
+    urllib.urlretrieve(url, 'tmp/' + str(
+        user_id) + project_settings.original_photo_url)
+    img = cv2.imread('tmp/' + str(
+        user_id) + project_settings.original_photo_url, 0)
+    tmp = [decode(img)]
+    if len(tmp) != 0:
+        s = tmp[0][0].data
+        res = find_info(s)
+        return res
     for i in range(3):
         recognize_img(user_id, url, i)
         tmp1 = find_bar_code(
             'tmp/' + str(user_id) + project_settings.result_url)
         if tmp1 is None:
             print(user_id, i)
+            time.sleep(2)
             continue
         res = find_info(tmp1)
+        if res[0] is None:
+            continue
         return res
-    return "Take a picture one more time, please"
+    return ["Take a picture one more time, please"]
