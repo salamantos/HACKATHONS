@@ -3,8 +3,6 @@
 import re
 from Queue import Queue
 
-from bot_commands import commands_list, understand_text
-# from storage import Storage
 from settings import *
 from secret_settings import BOT_TOKEN
 from Telegram_requests import *
@@ -33,7 +31,6 @@ try:
 except FatalError as exc_txt:
     log_write(log_file, 'sys', exc_txt.txt)
     exit(1)
-# storage = Storage()
 offset = 0
 
 # Пропускаем пропущенные сообщения

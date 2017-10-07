@@ -9,11 +9,11 @@ processor = AbbyyOnlineSdk()  # work wih Abbyy Cloud OCR SDK
 
 
 # Recognize a file at filePath and save result to resultFilePath
-def recognizeFile(filePath, resultFilePath, outputFormat):
+def recognize_file(file_path, result_file_path, output_format):
     print "Uploading.."
     settings = ProcessingSettings()
-    settings.OutputFormat = outputFormat
-    task = processor.ProcessImage(filePath, settings)
+    settings.OutputFormat = output_format
+    task = processor.ProcessImage(file_path, settings)
 
     """
     if task == None:
@@ -33,13 +33,13 @@ def recognizeFile(filePath, resultFilePath, outputFormat):
     # at http://ocrsdk.com/documentation/apireference/listFinishedTasks/).
     """
 
-    while task.IsActive() == True:
+    while task.IsActive():
         time.sleep(5)
         sys.stdout.write(".")
         task = processor.GetTaskStatus(task)
 
     if task.Status == "Completed":
-        processor.DownloadResult(task, resultFilePath)
+        processor.DownloadResult(task, result_file_path)
         """if task.DownloadUrl != None:
             processor.DownloadResult( task, resultFilePath )
             print "Result was written to %s" % resultFilePath

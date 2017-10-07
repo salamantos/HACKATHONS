@@ -13,9 +13,9 @@ def recognize_img(user_id, link):
         os.makedirs('tmp/' + str(user_id))
 
     urllib.urlretrieve(link, 'tmp/' + str(user_id) + project_settings.original_photo_url)
-    ToWhiteAndBlack('tmp/' + str(user_id) + project_settings.original_photo_url,
+    to_white_and_black('tmp/' + str(user_id) + project_settings.original_photo_url,
                     'tmp/' + str(user_id) + project_settings.white_black_url)
-    recognizeFile('tmp/' + str(user_id) + project_settings.white_black_url,
+    recognize_file('tmp/' + str(user_id) + project_settings.white_black_url,
                   'tmp/' + str(user_id) + project_settings.result_url, 'xml')
     return 0
 
