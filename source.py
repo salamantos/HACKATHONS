@@ -68,7 +68,9 @@ def multi_thread_user_communication(user_id):
 
         da = get_info_by_url(user_id, get_photo_url(photo))
         for i in da:
-            answer(log_file, bot, user_id, chat_id, i, reply_markup, del_msg=False)
+            print i
+            if i is not None:
+                answer(log_file, bot, user_id, chat_id, i, reply_markup, del_msg=False)
 
     #     give_answer = False  # Готов ли ответ
     #
