@@ -56,13 +56,70 @@ try:
         try:
             updates = get_updates_for_bot(bot, offset)  # Если нет обновлений, вернет пустой список
             for update in updates:
-                print update
                 # Получаем информацию о сообщении
                 offset, user_id, chat_id, username, text, message_date = extract_update_info(
                     update)
+                give_answer = False  # Готов ли ответ
+
+                # Если не текстовое сообщение
+                if text is None:
+                    text = u'(Нет текста)'
+                    answer_text = NO_TEXT
+                    give_answer = True
+
+                # Логи
+                try:
+                    log_write(log_file, 'usr', update, username, user_id)
+                    log_write(log_file, 'usr', text.encode('utf-8'), username, user_id)
+                except UnicodeError:
+                    log_write(log_file, 'usr', 'UnicodeError', username, user_id)
+
+                # Если получили комманду
+                if text[0] == '/' and not give_answer:
+                    try:
+                        if '@WikiReachBot' in text:
+                            text = re.sub(r'@WikiReachBot', '', text)
+                        if '/answer' in text:
+                            text = re.sub(r'/answer ', '', text)
+                            answer_text, reply_markup = commands_list['/answer'](
+                                user_id in storage.data, storage,
+                                user_id, username, text)
+                            give_answer = True
+
+                        if not give_answer:
+                            answer_text, reply_markup = commands_list.get(text)(
+                                user_id in storage.data, storage,
+                                user_id, username)
+
+                    except TypeError:
+                        if user_id not in storage.data:
+                            storage.new_user(username, user_id)
+                        answer_text = NON_EXISTENT_COMMAND
+                    give_answer = True
+
+                # Если текстовый запрос, пытаемся понять его
+                if not give_answer:
+                    answer_text, reply_markup = understand_text(user_id in storage.data,
+                                                                storage,
+                                                                user_id, username, text)
+                    give_answer = True
+
+                if storage.data[user_id]['question'] == 'answer_article_id' or \
+                                storage.data[user_id]['state'] == 'waitForStart':
+                    del_msg = True
+                else:
+                    del_msg = False
+                answer(log_file, storage, bot, user_id, chat_id, answer_text,
+                       reply_markup, del_msg=False)
+
                 offset += 1  # id следующего обновления
-                result = bot.send_message(chat_id, "1").wait()
+            answer(log_file, storage, bot, 0, 0, '', None)
             time.sleep(0.01)
+        except ContinueError as exc_txt:
+            answer(log_file, storage, bot, user_id, chat_id, exc_txt.txt,
+                   reply_markup, del_msg=False)
+
+            offset += 1  # id следующего обновления
         except EasyError as exc_txt:
             offset += 1
             log_write(log_file, 'sys', exc_txt.txt)
