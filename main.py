@@ -12,7 +12,7 @@ class testHTTPServer_RequestHandler(BaseHTTPRequestHandler):
         self.wfile.write(b"test server")
  
 def run():
-    server_address = ('localhost', 80)
+    server_address = ('localhost', 8000)
     httpd = HTTPServer(server_address, testHTTPServer_RequestHandler)
     print('running server...')
     httpd.serve_forever()
