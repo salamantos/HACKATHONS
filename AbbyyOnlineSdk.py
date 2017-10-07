@@ -2,17 +2,13 @@
 
 # Usage: process.py <input file> <output file> [-language <Language>] [-pdf|-txt|-rtf|-docx|-xml]
 
-import argparse
 import base64
-import getopt
-import MultipartPostHandler
-import os
-import re
-import sys
-import time
-import urllib2
 import urllib
+import urllib2
 import xml.dom.minidom
+
+import MultipartPostHandler
+
 
 class ProcessingSettings:
 	Language = "English"
@@ -95,8 +91,8 @@ class AbbyyOnlineSdk:
 
 	def getOpener( self ):
 		if self.Proxy == None:
-			self.opener = urllib2.build_opener( MultipartPostHandler.MultipartPostHandler,
-			urllib2.HTTPHandler(debuglevel=self.enableDebugging))
+			self.opener = urllib2.build_opener(MultipartPostHandler.MultipartPostHandler,
+                                               urllib2.HTTPHandler(debuglevel=self.enableDebugging))
 		else:
 			self.opener = urllib2.build_opener( 
 				self.Proxy, 

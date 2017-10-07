@@ -11,7 +11,7 @@ from Telegram_requests import *
 import threading
 import json
 import requests
-import image_recognition
+from image_recognition import get_info_by_url
 
 # Включение бота
 reset_messages = raw_input('Reset messages? y/n\n')
@@ -69,7 +69,9 @@ def multi_thread_user_communication(user_id):
         # Получаем информацию о сообщении
         offset, user_id, chat_id, username, text, message_date, photo = extract_update_info(personal_update)
 
-        print get_photo_url(photo)
+        da = get_info_by_url(user_id, get_photo_url(photo))
+        for i in da:
+            answer(log_file, bot, user_id, chat_id, i, reply_markup, del_msg=False)
 
     #     give_answer = False  # Готов ли ответ
     #
