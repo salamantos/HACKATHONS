@@ -8,15 +8,18 @@ from buildWhiteAndBlack import *
 from process import *
 
 
-def recognize_img(user_id, link):
+def recognize_img(user_id, link, n):
     if not os.path.exists('tmp/' + str(user_id)):
         os.makedirs('tmp/' + str(user_id))
 
-    urllib.urlretrieve(link, 'tmp/' + str(user_id) + project_settings.original_photo_url)
-    to_white_and_black('tmp/' + str(user_id) + project_settings.original_photo_url,
-                    'tmp/' + str(user_id) + project_settings.white_black_url)
+    urllib.urlretrieve(link, 'tmp/' + str(
+        user_id) + project_settings.original_photo_url)
+    to_white_and_black[n]('tmp/' + str(user_id) +
+                          project_settings.original_photo_url,
+                          'tmp/' + str(
+                              user_id) + project_settings.white_black_url)
     recognize_file('tmp/' + str(user_id) + project_settings.white_black_url,
-                  'tmp/' + str(user_id) + project_settings.result_url, 'xml')
+                   'tmp/' + str(user_id) + project_settings.result_url, 'xml')
     return 0
 
 
@@ -46,6 +49,13 @@ def find_info(bar_code):
 
 
 def get_info_by_url(user_id, url):
-    recognize_img(user_id, url)
-    tmp1 = find_bar_code('tmp/' + str(user_id) + project_settings.result_url)
-    return find_info(tmp1)
+    for i in range(3):
+        recognize_img(user_id, url, i)
+        tmp1 = find_bar_code(
+            'tmp/' + str(user_id) + project_settings.result_url)
+        if tmp1 is None:
+            print(user_id, i)
+            continue
+        res = find_info(tmp1)
+        return res
+    return "Take a picture one more time, please"
