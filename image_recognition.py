@@ -29,13 +29,13 @@ def find_info(bar_code):
     if title.strip() == u'Гудс Матрикс':
         return None, None, None
     mark = soup.find('span', id="ctl00_ContentPH_Mark_MarkL")
-    reviews_score = float(db.get_score(title.split()[2]))
+    reviews_score = db.get_score(bar_code)
     print(reviews_score)
     if mark.string is not None and reviews_score is not None:
-        mark = (float(mark.string.split()[0].replace(',', '.'))/2 + reviews_score)/2
-    elif mark is not None:
-        mark = reviews_score
+        mark = (float(mark.string.split()[0].replace(',', '.'))/2 + float(reviews_score))/2
     elif reviews_score is not None:
+        mark = float(reviews_score)
+    elif mark is not None:
         mark = float(mark.string.split()[0].replace(',', '.'))/2
     mark_num = soup.find('span', id="ctl00_ContentPH_Mark_MarkNum")
     if mark_num is not None:
