@@ -83,18 +83,19 @@ def multi_thread_user_communication(user_id):
                     answer(log_file, bot, user_id, chat_id, i, reply_markup, del_msg=False)
                 else:
                     answer(log_file, bot, user_id, chat_id, "Мы не знаем что это :(", reply_markup, del_msg=False)
+                    return
             elif k == 1:
                 print i
                 if i is not None:
                     answer(log_file, bot, user_id, chat_id, "Средняя оценка \n" + i, reply_markup, del_msg=False)
                 else:
-                    answer(log_file, bot, user_id, chat_id, "Данных о средней оценке нет :(", reply_markup, del_msg=False)
+                    return
             else:
                 print i
                 if i is not None:
                     answer(log_file, bot, user_id, chat_id, "Всего отзывов\n" + i, reply_markup, del_msg=False)
                 else:
-                    answer(log_file, bot, user_id, chat_id, "Отзовов нет :( ", reply_markup, del_msg=False)
+                    return
             k+=1
 
     except ContinueError as exc_txt:
