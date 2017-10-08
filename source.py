@@ -142,9 +142,12 @@ def multi_thread_user_communication(user_id):
                     review_stages[user_id] = "text"
                 elif review_stages[user_id] == "text":
                     unfilled_reviews[user_id].text = text
-                    answer(log_file, bot, user_id, chat_id, "Фотография:\n", reply_markup, del_msg=False)
+                    answer(log_file, bot, user_id, chat_id, "Фотография: (пропустить - /skip)\n", reply_markup, del_msg=False)
                     review_stages[user_id] = "picture"
-                    
+                elif review_stages[user_id] == "picture" and text == "/skip":
+                    write_review(user_id)
+                    answer(log_file, bot, user_id, chat_id, "Спасибо за отзыв!\n", reply_markup, del_msg=False)
+                   
             else:
                 if user_id in review_stages:
                     write_review(user_id)
