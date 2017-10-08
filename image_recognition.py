@@ -1,13 +1,12 @@
 # coding=utf-8
+
 import os
 import requests
 from bs4 import BeautifulSoup
-
-import project_settings
+import settings
 import urllib
 from pyzbar.pyzbar import decode
 import cv2
-from settings import *
 
 
 def find_bar_code(xml_filename):
@@ -38,14 +37,14 @@ def find_info(bar_code):
     return title, mark, mark_num
 
 
-def get_info_by_url(bot, chat_id, user_id, url):
+def get_info_by_url(bot, chat_id, user_id, url, set=None):
     if not os.path.exists('tmp/' + str(user_id)):
         os.makedirs('tmp/' + str(user_id))
 
     urllib.urlretrieve(url, 'tmp/' + str(
-        user_id) + project_settings.original_photo_url)
+        user_id) + settings.original_photo_url)
     img = cv2.imread('tmp/' + str(
-        user_id) + project_settings.original_photo_url, 0)
+        user_id) + settings.original_photo_url, 0)
     tmp = decode(img)
     if len(tmp) != 0:
         s = tmp[0].data
