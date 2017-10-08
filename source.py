@@ -111,7 +111,7 @@ def multi_thread_user_communication(user_id):
                     elif k == 1:
                         print i
                         if i is not None:
-                            answer(log_file, bot, user_id, chat_id, "Средняя оценка:" + u"🍔"*int(i), reply_markup, del_msg=False)
+                            answer(log_file, bot, user_id, chat_id, "Средняя оценка: " + u"🍔"*int(i), reply_markup, del_msg=False)
                     k+=1
 
                 reviews = db.get_reviews(product_id)
