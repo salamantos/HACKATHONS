@@ -94,7 +94,7 @@ def multi_thread_user_communication(user_id):
                 try:
                     product_id = int(da[0].split()[2])
                 except:
-                    answer(log_file, bot, user_id, chat_id, da[0], reply_markup, del_msg=False)
+                    answer(log_file, bot, user_id, chat_id, PHOTO_IS_NONE, reply_markup, del_msg=False)
                     return
                 if da[0] is not None:
                     last_product[user_id] = product_id
