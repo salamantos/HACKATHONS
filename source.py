@@ -117,6 +117,11 @@ def multi_thread_user_communication(user_id):
                 reviews = db.get_reviews(product_id)
                 if list(reviews) != []:
                     for r in reviews:
+                        if r.image_id is not None:
+                            #answer(log_file, bot, user_id, chat_id, "https://i.imgur.com/4SdLAlo.jpg\n", reply_markup, del_msg=False)
+                            break
+                                
+                    for r in reviews:
                         answer(log_file, bot, user_id, chat_id, "%s: %s\n\t%s" % (r.user_id, u"🍔"*r.rating, r.text), reply_markup, del_msg=False)
                     answer(log_file, bot, user_id, chat_id, "Оставить свой: /review\n", reply_markup, del_msg=False)
                 else:
@@ -142,9 +147,12 @@ def multi_thread_user_communication(user_id):
                     review_stages[user_id] = "text"
                 elif review_stages[user_id] == "text":
                     unfilled_reviews[user_id].text = text
-                    answer(log_file, bot, user_id, chat_id, "Фотография:\n", reply_markup, del_msg=False)
+                    answer(log_file, bot, user_id, chat_id, "Фотография: (пропустить - /skip)\n", reply_markup, del_msg=False)
                     review_stages[user_id] = "picture"
-                    
+                elif review_stages[user_id] == "picture" and text == "/skip":
+                    write_review(user_id)
+                    answer(log_file, bot, user_id, chat_id, "Спасибо за отзыв!\n", reply_markup, del_msg=False)
+                   
             else:
                 if user_id in review_stages:
                     write_review(user_id)
