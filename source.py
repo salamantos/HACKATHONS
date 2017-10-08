@@ -118,7 +118,8 @@ def multi_thread_user_communication(user_id):
                 if list(reviews) != []:
                     for r in reviews:
                         if r.image_id is not None:
-                            #answer(log_file, bot, user_id, chat_id, "https://i.imgur.com/4SdLAlo.jpg\n", reply_markup, del_msg=False)
+                            bot.send_photo(chat_id=chat_id, photo='https://api.telegram.org/bot' + BOT_TOKEN + \
+                                '/getFile?file_id=' + str(r.image_id))
                             break
                                 
                     for r in reviews:
