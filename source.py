@@ -10,6 +10,7 @@ import threading
 import json
 import requests
 from image_recognition import get_info_by_url
+import db
 from db import Review
 
 # Включение бота
@@ -97,22 +98,23 @@ def multi_thread_user_communication(user_id):
                     if k == 0:
                         print i
                         if i is not None:
-                            answer(log_file, bot, user_id, chat_id, i, reply_markup, del_msg=False)
+                            answer(log_file, bot, user_id, chat_id, ' '.join(i.split()[4:]), reply_markup, del_msg=False)
                         else:
                             answer(log_file, bot, user_id, chat_id, "Мы не знаем что это :(", reply_markup, del_msg=False)
                             return
                     elif k == 1:
                         print i
                         if i is not None:
-                            answer(log_file, bot, user_id, chat_id, "Средняя оценка \n" + i, reply_markup, del_msg=False)
-                    else:
-                        print i
-                        if i is not None:
-                            answer(log_file, bot, user_id, chat_id, "Всего отзывов\n" + i, reply_markup, del_msg=False)
-                            answer(log_file, bot, user_id, chat_id, "Оставить свой: /review\n", reply_markup, del_msg=False)
-                        else:
-                            answer(log_file, bot, user_id, chat_id, "Оставить первый отзыв: /review\n", reply_markup, del_msg=False)
+                            answer(log_file, bot, user_id, chat_id, "Средняя оценка:" + u"🍔"*int(i), reply_markup, del_msg=False)
                     k+=1
+                reviews = db.get_reviews(last_product[user_id])
+                if list(reviews) != []:
+                    for r in reviews:
+                        answer(log_file, bot, user_id, chat_id, "%s: %s\n\t%s" % (r.user_id, u"🍔"*r.rating, r.text), reply_markup, del_msg=False)
+                    answer(log_file, bot, user_id, chat_id, "Оставить свой: /review\n", reply_markup, del_msg=False)
+                else:
+                    answer(log_file, bot, user_id, chat_id, "Оставить первый отзыв: /review\n", reply_markup, del_msg=False)
+
 
         else:
             if text == "/review":
@@ -123,8 +125,9 @@ def multi_thread_user_communication(user_id):
                 if review_stages[user_id] == "rating":
                     #exception possible 
                     unfilled_reviews[user_id].rating = int(text[-1])
-                    answer(log_file, bot, user_id, chat_id, "Цена товара:\n", reply_markup, del_msg=False)
-                    review_stages[user_id] = "price"
+                    #answer(log_file, bot, user_id, chat_id, "Цена товара:\n", reply_markup, del_msg=False)
+                    answer(log_file, bot, user_id, chat_id, "Отзыв:\n", reply_markup, del_msg=False)
+                    review_stages[user_id] = "text"
                 elif review_stages[user_id] == "price":
                     #exception possible
                     unfilled_reviews[user_id].price = float(text)

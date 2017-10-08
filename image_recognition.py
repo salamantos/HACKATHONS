@@ -7,7 +7,7 @@ import settings
 import urllib
 from pyzbar.pyzbar import decode
 import cv2
-
+import db
 
 def find_bar_code(xml_filename):
     xml_string = open(xml_filename).read()
@@ -29,8 +29,11 @@ def find_info(bar_code):
     if title.strip() == u'Гудс Матрикс':
         return None, None, None
     mark = soup.find('span', id="ctl00_ContentPH_Mark_MarkL")
+    reviews_score = db.get_score(title.split()[2])
     if mark is not None:
-        mark = mark.string
+        mark = (float(mark.string) + reviews_score)/2
+    else:
+        mark = reviews_score
     mark_num = soup.find('span', id="ctl00_ContentPH_Mark_MarkNum")
     if mark_num is not None:
         mark_num = mark_num.string
