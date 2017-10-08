@@ -75,10 +75,27 @@ def multi_thread_user_communication(user_id):
         else:
             answer(log_file, bot, user_id, chat_id, PHOTO_IS_NONE, reply_markup, del_msg=False)
             return
+        k = 0
         for i in da:
-            print i
-            if i is not None:
-                answer(log_file, bot, user_id, chat_id, i, reply_markup, del_msg=False)
+            if k == 0:
+                print i
+                if i is not None:
+                    answer(log_file, bot, user_id, chat_id, i, reply_markup, del_msg=False)
+                else:
+                    answer(log_file, bot, user_id, chat_id, "Мы не знаем что это :(", reply_markup, del_msg=False)
+            elif k == 1:
+                print i
+                if i is not None:
+                    answer(log_file, bot, user_id, chat_id, "Средняя оценка \n" + i, reply_markup, del_msg=False)
+                else:
+                    answer(log_file, bot, user_id, chat_id, "Данных о средней оценке нет :(", reply_markup, del_msg=False)
+            else:
+                print i
+                if i is not None:
+                    answer(log_file, bot, user_id, chat_id, "Всего отзывов\n" + i, reply_markup, del_msg=False)
+                else:
+                    answer(log_file, bot, user_id, chat_id, "Отзовов нет :( ", reply_markup, del_msg=False)
+            k+=1
 
     except ContinueError as exc_txt:
         answer(log_file, bot, user_id, chat_id, exc_txt.txt,

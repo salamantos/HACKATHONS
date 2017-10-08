@@ -4,24 +4,10 @@ import requests
 from bs4 import BeautifulSoup
 
 import project_settings
-from buildWhiteAndBlack import *
-from process import *
+import urllib
 from pyzbar.pyzbar import decode
-
+import cv2
 from settings import *
-
-
-def recognize_img(user_id, link, n):
-    urllib.urlretrieve(link, 'tmp/' + str(
-        user_id) + project_settings.original_photo_url)
-    to_white_and_black[n]('tmp/' + str(user_id) +
-                          project_settings.original_photo_url,
-                          'tmp/' + str(
-                              user_id) + project_settings.white_black_url)
-    recognize_file('tmp/' + str(user_id) + project_settings.white_black_url,
-                   'tmp/' + str(user_id) + project_settings.result_url, 'xml')
-
-    return 0
 
 
 def find_bar_code(xml_filename):
@@ -55,6 +41,7 @@ def find_info(bar_code):
 def get_info_by_url(bot, chat_id, user_id, url):
     if not os.path.exists('tmp/' + str(user_id)):
         os.makedirs('tmp/' + str(user_id))
+
     urllib.urlretrieve(url, 'tmp/' + str(
         user_id) + project_settings.original_photo_url)
     img = cv2.imread('tmp/' + str(
@@ -64,19 +51,5 @@ def get_info_by_url(bot, chat_id, user_id, url):
         s = tmp[0].data
         res = find_info(s)
         return res
-
-    bot.send_message(chat_id, WE_TRYING).wait()
-
-    for i in range(3):
-        recognize_img(user_id, url, i)
-        tmp1 = find_bar_code(
-            'tmp/' + str(user_id) + project_settings.result_url)
-        if tmp1 is None:
-            print(user_id, i)
-            time.sleep(2)
-            continue
-        res = find_info(tmp1)
-        if res[0] is None:
-            continue
-        return res
-    return ["Take a picture one more time, please"]
+    else:
+        return ["Я не могу распознать фото :( Попробуй отправить получше"]
