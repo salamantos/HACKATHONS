@@ -94,7 +94,7 @@ def multi_thread_user_communication(user_id):
                 try:
                     product_id = int(da[0].split()[2])
                 except:
-                    answer(log_file, bot, user_id, chat_id, da[0], reply_markup, del_msg=False)
+                    answer(log_file, bot, user_id, chat_id, PHOTO_IS_NONE, reply_markup, del_msg=False)
                     return
                 if da[0] is not None:
                     last_product[user_id] = product_id
@@ -116,6 +116,11 @@ def multi_thread_user_communication(user_id):
 
                 reviews = db.get_reviews(product_id)
                 if list(reviews) != []:
+                    for r in reviews:
+                        if r.image_id is not None:
+                            #answer(log_file, bot, user_id, chat_id, "https://i.imgur.com/4SdLAlo.jpg\n", reply_markup, del_msg=False)
+                            break
+                                
                     for r in reviews:
                         answer(log_file, bot, user_id, chat_id, "%s: %s\n\t%s" % (r.user_id, u"🍔"*r.rating, r.text), reply_markup, del_msg=False)
                     answer(log_file, bot, user_id, chat_id, "Оставить свой: /review\n", reply_markup, del_msg=False)
