@@ -91,7 +91,8 @@ def multi_thread_user_communication(user_id):
                 result = bot.send_message(chat_id, PHOTO_IS_IN_PROCESS).wait()
                 print result
                 da = get_info_by_url(bot, chat_id, user_id, get_photo_url(photo))
-                last_product[user_id] = int(da[0].split()[2])
+                if da[0] is not None:
+                    last_product[user_id] = int(da[0].split()[2])
 
                 k = 0
                 for i in da:
