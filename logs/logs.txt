@@ -2760,3 +2760,15 @@ ame=u'Matvey', last_name=u'Volkov'), forward_from=None, forward_from_chat=None, 
 
 
 
+2017-10-08 09:14:34: ------------- Начало сеанса -------------
+2017-10-08 09:14:34: food_rate_bot
+
+2017-10-08 09:14:34: Successfully started
+2017-10-08 09:14:34: Successfully skipped messages
+2017-10-08 09:14:40: ---> @ () бот ответил: "Message(message_id=1824, sender=User(id=458168043, first_name=u'FoodRateBot', last_name=None, username=u'food_rate_bot'), date=1507454080, edit_date=None, chat=Chat(id=109029852, type=u'private', title=None, username=u'salamantos', first_name=u'Matvey', last_name=u'Volkov'), forward_from=None, forward_from_chat=None, forward_date=None, reply_to_message=None, text=u'\u041d\u0435 \u043f\u043e\u0445\u043e\u0436\u0435 \u043d\u0430 \u0448\u0442\u0440\u0438\u0445-\u043a\u043e\u0434 \U0001f914 \n\u041f\u043e\u043f\u0440\u043e\u0431\u0443\u0439\u0442\u0435 \u0441\u0444\u043e\u0442\u043e\u0433\u0440\u0430\u0444\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0447\u0451\u0442\u0447\u0435 \U0001f44c', entities=None, audio=None, document=None, photo=None, sticker=None, video=None, voice=None, caption=None, contact=None, location=None, venue=None, new_chat_member=None, left_chat_member=None, new_chat_title=None, new_chat_photo=None, delete_chat_photo=None, group_chat_created=None, supergroup_chat_created=None, channel_chat_created=None, migrate_to_chat_id=None, migrate_from_chat_id=None, pinned_message=None)"
+
+2017-10-08 09:14:41: Бот остановлен.
+2017-10-08 09:14:41: ------------- Конец сеанса --------------
+
+
+
