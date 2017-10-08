@@ -1,0 +1,256 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<document xmlns="http://www.abbyy.com/FineReader_xml/FineReader10-schema-v1.xml" version="1.0" producer="ABBYY FineReader Engine 11" languages="" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.abbyy.com/FineReader_xml/FineReader10-schema-v1.xml http://www.abbyy.com/FineReader_xml/FineReader10-schema-v1.xml">
+<page width="1280" height="720" resolution="70" originalCoords="1" rotation="RotatedCounterclockwise">
+<block blockType="Picture" blockName="" l="0" t="0" r="1280" b="720"><region><rect l="0" t="0" r="1280" b="720"/></region>
+</block>
+<block blockType="Text" blockName="" l="688" t="0" r="765" b="149"><region><rect l="688" t="0" r="765" b="149"/></region>
+<text>
+<par lineSpacing="3910">
+<line baseline="542" l="734" t="0" r="765" b="148"><formatting lang="EnglishUnitedStates">
+<charParams l="738" t="0" r="764" b="15">N</charParams>
+<charParams l="739" t="19" r="757" b="33">e</charParams>
+<charParams l="739" t="35" r="758" b="51">o</charParams>
+<charParams l="739" t="54" r="758" b="69">n</charParams>
+<charParams l="757" t="72" r="765" b="82" suspicious="1">&quot;</charParams>
+<charParams l="735" t="83" r="765" b="126"> </charParams>
+<charParams l="735" t="127" r="738" b="130">.</charParams>
+<charParams l="734" t="131" r="738" b="144"> </charParams>
+<charParams l="734" t="145" r="737" b="148">.</charParams></formatting></line></par>
+<par lineSpacing="3910">
+<line baseline="586" l="689" t="0" r="721" b="147"><formatting lang="EnglishUnitedStates">
+<charParams l="694" t="0" r="713" b="3" suspicious="1">i</charParams>
+<charParams l="689" t="5" r="721" b="18" suspicious="1">^</charParams>
+<charParams l="695" t="23" r="712" b="29" suspicious="1">r</charParams>
+<charParams l="694" t="29" r="719" b="37" suspicious="1">i</charParams>
+<charParams l="694" t="39" r="713" b="51" suspicious="1">r</charParams>
+<charParams l="690" t="51" r="721" b="58" suspicious="1">j</charParams>
+<charParams l="694" t="59" r="714" b="73" suspicious="1">a</charParams>
+<charParams l="694" t="78" r="713" b="90" suspicious="1">c</charParams>
+<charParams l="694" t="93" r="713" b="108" suspicious="1">T</charParams>
+<charParams l="694" t="110" r="713" b="127" suspicious="1">M</charParams>
+<charParams l="694" t="131" r="713" b="147" suspicious="1">K</charParams></formatting></line></par>
+</text>
+</block>
+<block blockType="Text" blockName="" l="498" t="0" r="649" b="261"><region><rect l="498" t="0" r="649" b="261"/></region>
+<text>
+<par align="Justified" lineSpacing="3291">
+<line baseline="648" l="622" t="0" r="649" b="259"><formatting lang="EnglishUnitedStates">
+<charParams l="635" t="0" r="648" b="1">;</charParams>
+<charParams l="629" t="2" r="649" b="3" suspicious="1"> </charParams>
+<charParams l="629" t="3" r="649" b="18" suspicious="1">u</charParams>
+<charParams l="632" t="19" r="649" b="34" suspicious="1">m</charParams>
+<charParams l="632" t="35" r="649" b="36" suspicious="1"> </charParams>
+<charParams l="633" t="37" r="649" b="49" suspicious="1">«</charParams>
+<charParams l="631" t="50" r="649" b="51" suspicious="1"> </charParams>
+<charParams l="631" t="52" r="646" b="68" suspicious="1">u</charParams>
+<charParams l="633" t="70" r="648" b="82">n</charParams>
+<charParams l="632" t="83" r="649" b="85"> </charParams>
+<charParams l="632" t="86" r="649" b="101" suspicious="1">0</charParams>
+<charParams l="630" t="101" r="641" b="108" suspicious="1">/</charParams>
+<charParams l="630" t="109" r="649" b="119"> </charParams>
+<charParams l="632" t="120" r="649" b="135" suspicious="1">a</charParams>
+<charParams l="633" t="136" r="648" b="150">o</charParams>
+<charParams l="632" t="155" r="648" b="168" suspicious="1">n</charParams>
+<charParams l="622" t="169" r="649" b="171"> </charParams>
+<charParams l="622" t="172" r="649" b="187" suspicious="1">g</charParams>
+<charParams l="622" t="188" r="649" b="189" suspicious="1"> </charParams>
+<charParams l="631" t="190" r="649" b="206">o</charParams>
+<charParams l="631" t="207" r="649" b="209" suspicious="1"> </charParams>
+<charParams l="631" t="210" r="648" b="224">c</charParams>
+<charParams l="632" t="225" r="648" b="236" suspicious="1">a</charParams>
+<charParams l="632" t="237" r="649" b="239" suspicious="1"> </charParams>
+<charParams l="632" t="240" r="649" b="259">m</charParams></formatting></line>
+<line baseline="682" l="595" t="0" r="629" b="259"><formatting lang="EnglishUnitedStates">
+<charParams l="596" t="0" r="626" b="26" suspicious="1">f</charParams>
+<charParams l="596" t="0" r="626" b="26" suspicious="1">e</charParams>
+<charParams l="608" t="26" r="620" b="28" suspicious="1">1</charParams>
+<charParams l="601" t="29" r="621" b="30"> </charParams>
+<charParams l="601" t="31" r="621" b="37" suspicious="1">1</charParams>
+<charParams l="599" t="43" r="622" b="56" suspicious="1">2</charParams>
+<charParams l="600" t="57" r="622" b="70" suspicious="1">5</charParams>
+<charParams l="599" t="73" r="624" b="87" suspicious="1">0</charParams>
+<charParams l="599" t="88" r="622" b="102" suspicious="1">0</charParams>
+<charParams l="597" t="103" r="622" b="117" suspicious="1">9</charParams>
+<charParams l="595" t="117" r="629" b="130" suspicious="1">2</charParams>
+<charParams l="595" t="131" r="629" b="132" suspicious="1"> </charParams>
+<charParams l="600" t="132" r="616" b="141">r</charParams>
+<charParams l="598" t="141" r="604" b="146">,</charParams>
+<charParams l="600" t="153" r="626" b="176" suspicious="1">M</charParams>
+<charParams l="598" t="178" r="627" b="194" suspicious="1">6</charParams>
+<charParams l="598" t="195" r="616" b="207" suspicious="1">c</charParams>
+<charParams l="598" t="209" r="616" b="223" suspicious="1">K</charParams>
+<charParams l="598" t="224" r="616" b="237">B</charParams>
+<charParams l="598" t="239" r="616" b="252">a</charParams>
+<charParams l="595" t="254" r="603" b="259" suspicious="1">,</charParams></formatting></line>
+<line baseline="714" l="562" t="0" r="589" b="261"><formatting lang="EnglishUnitedStates">
+<charParams l="569" t="0" r="585" b="1" suspicious="1">i</charParams>
+<charParams l="569" t="7" r="585" b="20" suspicious="1">e</charParams>
+<charParams l="563" t="24" r="585" b="38" suspicious="1">p</charParams>
+<charParams l="562" t="42" r="585" b="85" suspicious="1">^</charParams>
+<charParams l="568" t="86" r="582" b="92" suspicious="1">:</charParams>
+<charParams l="567" t="93" r="579" b="96" suspicious="1">;</charParams>
+<charParams l="568" t="97" r="588" b="103" suspicious="1">1</charParams>
+<charParams l="566" t="110" r="589" b="126" suspicious="1">2</charParams>
+<charParams l="564" t="130" r="585" b="146" suspicious="1">^</charParams>
+<charParams l="567" t="148" r="585" b="163" suspicious="1">0</charParams>
+<charParams l="568" t="168" r="589" b="179" suspicious="1">d</charParams>
+<charParams l="567" t="179" r="582" b="186" suspicious="1">)</charParams>
+<charParams l="567" t="190" r="582" b="199" suspicious="1">v</charParams>
+<charParams l="567" t="199" r="583" b="205" suspicious="1">i</charParams>
+<charParams l="566" t="210" r="583" b="228" suspicious="1">c</charParams>
+<charParams l="576" t="230" r="583" b="234" suspicious="1">r</charParams>
+<charParams l="566" t="234" r="588" b="249" suspicious="1">3</charParams>
+<charParams l="566" t="255" r="571" b="261" suspicious="1">.</charParams></formatting></line></par>
+<par align="Right" lineSpacing="3189">
+<line baseline="746" l="527" t="0" r="559" b="261"><formatting lang="EnglishUnitedStates">
+<charParams l="532" t="0" r="554" b="16" suspicious="1">f</charParams>
+<charParams l="532" t="0" r="554" b="16" suspicious="1">t</charParams>
+<charParams l="532" t="17" r="554" b="18" suspicious="1"> </charParams>
+<charParams l="536" t="16" r="553" b="30">h</charParams>
+<charParams l="536" t="31" r="559" b="33"> </charParams>
+<charParams l="536" t="34" r="559" b="48" suspicious="1">B</charParams>
+<charParams l="535" t="49" r="553" b="63" suspicious="1">w</charParams>
+<charParams l="533" t="63" r="554" b="86" suspicious="1">*</charParams>
+<charParams l="535" t="87" r="552" b="90" suspicious="1">:</charParams>
+<charParams l="531" t="91" r="553" b="93" suspicious="1">;</charParams>
+<charParams l="535" t="93" r="552" b="101" suspicious="1">r</charParams>
+<charParams l="534" t="102" r="546" b="113" suspicious="1">v</charParams>
+<charParams l="533" t="114" r="550" b="115"> </charParams>
+<charParams l="533" t="116" r="550" b="138" suspicious="1">w</charParams>
+<charParams l="529" t="139" r="550" b="151" suspicious="1">y</charParams>
+<charParams l="534" t="151" r="553" b="173" suspicious="1">m</charParams>
+<charParams l="533" t="174" r="553" b="175"> </charParams>
+<charParams l="533" t="176" r="551" b="187">g</charParams>
+<charParams l="533" t="188" r="553" b="190"> </charParams>
+<charParams l="533" t="191" r="553" b="208" suspicious="1">k</charParams>
+<charParams l="530" t="205" r="537" b="210" suspicious="1">,</charParams>
+<charParams l="527" t="213" r="550" b="234" suspicious="1">y</charParams>
+<charParams l="533" t="235" r="550" b="249">n</charParams>
+<charParams l="532" t="250" r="550" b="253"> </charParams>
+<charParams l="532" t="254" r="549" b="261">;</charParams>
+<charParams l="540" t="259" r="543" b="261" suspicious="1">■</charParams></formatting></line>
+<line baseline="778" l="498" t="52" r="534" b="259"><formatting lang="EnglishUnitedStates">
+<charParams l="504" t="52" r="527" b="67" suspicious="1">6</charParams>
+<charParams l="504" t="68" r="521" b="81" suspicious="1">n</charParams>
+<charParams l="502" t="82" r="534" b="97" suspicious="1">8</charParams>
+<charParams l="502" t="98" r="534" b="99"> </charParams>
+<charParams l="503" t="100" r="521" b="112" suspicious="1">K</charParams>
+<charParams l="502" t="113" r="519" b="126" suspicious="1">e</charParams>
+<charParams l="498" t="126" r="534" b="162" suspicious="1">®</charParams>
+<charParams l="498" t="163" r="534" b="164" suspicious="1"> </charParams>
+<charParams l="502" t="164" r="519" b="176" suspicious="1">n</charParams>
+<charParams l="523" t="175" r="526" b="178" suspicious="1">&apos;</charParams>
+<charParams l="503" t="179" r="533" b="223" suspicious="1">M</charParams>
+<charParams l="501" t="225" r="517" b="236" suspicious="1">c</charParams>
+<charParams l="500" t="238" r="532" b="252" suspicious="1">f</charParams>
+<charParams l="500" t="238" r="532" b="252" suspicious="1">e</charParams>
+<charParams l="500" t="253" r="521" b="259" suspicious="1">;</charParams></formatting></line></par>
+</text>
+</block>
+<block blockType="Text" blockName="" l="407" t="36" r="461" b="262"><region><rect l="407" t="36" r="461" b="262"/></region>
+<text>
+<par align="Justified">
+<line baseline="839" l="431" t="36" r="461" b="260"><formatting lang="EnglishUnitedStates">
+<charParams l="447" t="36" r="457" b="42" suspicious="1">&gt;</charParams>
+<charParams l="446" t="42" r="461" b="53" suspicious="1">i</charParams>
+<charParams l="447" t="53" r="461" b="59" suspicious="1">(</charParams>
+<charParams l="431" t="59" r="461" b="82" suspicious="1">^</charParams>
+<charParams l="446" t="82" r="461" b="93" suspicious="1">a</charParams>
+<charParams l="445" t="95" r="460" b="109" suspicious="1">H</charParams>
+<charParams l="445" t="110" r="460" b="119" suspicious="1">v</charParams>
+<charParams l="445" t="119" r="459" b="124" suspicious="1">i</charParams>
+<charParams l="443" t="124" r="459" b="138" suspicious="1">M</charParams>
+<charParams l="443" t="138" r="450" b="146" suspicious="1">»</charParams>
+<charParams l="443" t="146" r="459" b="160" suspicious="1">n</charParams>
+<charParams l="441" t="161" r="459" b="176" suspicious="1">o</charParams>
+<charParams l="441" t="177" r="459" b="181"> </charParams>
+<charParams l="441" t="182" r="457" b="196" suspicious="1">y</charParams>
+<charParams l="441" t="197" r="457" b="210" suspicious="1">a</charParams>
+<charParams l="440" t="211" r="457" b="222" suspicious="1">3</charParams>
+<charParams l="441" t="223" r="457" b="237" suspicious="1">H</charParams>
+<charParams l="440" t="239" r="456" b="251" suspicious="1">a</charParams>
+<charParams l="447" t="252" r="451" b="260" suspicious="1">-</charParams></formatting></line></par>
+</text>
+</block>
+<block blockType="Text" blockName="" l="335" t="0" r="388" b="256"><region><rect l="335" t="0" r="388" b="256"/></region>
+<text>
+<par lineSpacing="2470">
+<line baseline="908" l="366" t="3" r="388" b="256"><formatting lang="EnglishUnitedStates">
+<charParams l="371" t="3" r="378" b="9" suspicious="1">v</charParams>
+<charParams l="375" t="9" r="380" b="24" suspicious="1">-</charParams>
+<charParams l="375" t="25" r="388" b="30"> </charParams>
+<charParams l="382" t="31" r="388" b="36" suspicious="1">■</charParams>
+<charParams l="374" t="41" r="384" b="53" suspicious="1">r</charParams>
+<charParams l="376" t="54" r="386" b="66" suspicious="1">&gt;</charParams>
+<charParams l="376" t="67" r="388" b="69"> </charParams>
+<charParams l="376" t="70" r="388" b="82" suspicious="1">v</charParams>
+<charParams l="373" t="85" r="388" b="94" suspicious="1">y</charParams>
+<charParams l="377" t="95" r="388" b="109" suspicious="1">«</charParams>
+<charParams l="376" t="110" r="388" b="112" suspicious="1"> </charParams>
+<charParams l="376" t="113" r="388" b="118" suspicious="1">i</charParams>
+<charParams l="370" t="119" r="388" b="127"> </charParams>
+<charParams l="370" t="128" r="388" b="143" suspicious="1">v</charParams>
+<charParams l="376" t="144" r="388" b="156" suspicious="1">c</charParams>
+<charParams l="375" t="157" r="388" b="172" suspicious="1">o</charParams>
+<charParams l="374" t="173" r="388" b="186" suspicious="1">o</charParams>
+<charParams l="373" t="188" r="388" b="201" suspicious="1">b</charParams>
+<charParams l="374" t="201" r="388" b="205" suspicious="1">I</charParams>
+<charParams l="373" t="207" r="388" b="220" suspicious="1">X</charParams>
+<charParams l="371" t="222" r="388" b="227" suspicious="1">i</charParams>
+<charParams l="366" t="227" r="388" b="240" suspicious="1">y</charParams>
+<charParams l="371" t="241" r="388" b="253" suspicious="1">C</charParams>
+<charParams l="378" t="253" r="382" b="256" suspicious="1">1</charParams></formatting></line></par>
+</text>
+</block>
+<block blockType="Separator" blockName="" l="753" t="305" r="759" b="452"><region><rect l="753" t="305" r="758" b="405"/><rect l="754" t="405" r="759" b="452"/></region>
+<separator type="Black" thickness="4"><start x="305" y="524"/><end x="452" y="524"/>
+</separator>
+</block>
+<block blockType="Separator" blockName="" l="744" t="303" r="750" b="450"><region><rect l="744" t="303" r="748" b="402"/><rect l="745" t="402" r="749" b="448"/><rect l="745" t="448" r="750" b="450"/></region>
+<separator type="Black" thickness="4"><start x="303" y="533"/><end x="450" y="533"/>
+</separator>
+</block>
+<block blockType="Separator" blockName="" l="714" t="304" r="719" b="426"><region><rect l="714" t="304" r="719" b="346"/><rect l="714" t="346" r="718" b="420"/><rect l="715" t="420" r="719" b="421"/><rect l="714" t="421" r="719" b="423"/><rect l="715" t="423" r="719" b="426"/></region>
+<separator type="Black" thickness="4"><start x="304" y="563"/><end x="426" y="563"/>
+</separator>
+</block>
+<block blockType="Separator" blockName="" l="683" t="304" r="688" b="425"><region><rect l="683" t="304" r="688" b="324"/><rect l="683" t="324" r="687" b="355"/><rect l="683" t="355" r="688" b="357"/><rect l="683" t="357" r="687" b="389"/><rect l="684" t="389" r="688" b="392"/><rect l="683" t="392" r="687" b="421"/><rect l="683" t="421" r="688" b="423"/><rect l="683" t="423" r="687" b="425"/></region>
+<separator type="Black" thickness="4"><start x="304" y="594"/><end x="425" y="594"/>
+</separator>
+</block>
+<block blockType="Separator" blockName="" l="667" t="304" r="673" b="425"><region><rect l="667" t="304" r="673" b="382"/><rect l="668" t="382" r="673" b="386"/><rect l="667" t="386" r="673" b="404"/><rect l="668" t="404" r="673" b="414"/><rect l="667" t="414" r="673" b="425"/></region>
+<separator type="Black" thickness="5"><start x="304" y="610"/><end x="425" y="610"/>
+</separator>
+</block>
+<block blockType="Separator" blockName="" l="654" t="303" r="660" b="424"><region><rect l="654" t="303" r="660" b="424"/></region>
+<separator type="Black" thickness="5"><start x="303" y="623"/><end x="424" y="623"/>
+</separator>
+</block>
+<block blockType="Separator" blockName="" l="622" t="302" r="627" b="424"><region><rect l="623" t="302" r="627" b="383"/><rect l="622" t="383" r="626" b="385"/><rect l="623" t="385" r="627" b="386"/><rect l="622" t="386" r="627" b="387"/><rect l="622" t="387" r="626" b="424"/></region>
+<separator type="Black" thickness="4"><start x="302" y="655"/><end x="424" y="655"/>
+</separator>
+</block>
+<block blockType="Separator" blockName="" l="613" t="302" r="618" b="424"><region><rect l="613" t="302" r="618" b="424"/></region>
+<separator type="Black" thickness="4"><start x="302" y="664"/><end x="424" y="664"/>
+</separator>
+</block>
+<block blockType="Separator" blockName="" l="480" t="0" r="487" b="127"><region><rect l="483" t="0" r="487" b="35"/><rect l="481" t="35" r="486" b="89"/><rect l="480" t="89" r="484" b="127"/></region>
+<separator type="Black" thickness="4"><start x="0" y="796"/><end x="127" y="796"/>
+</separator>
+</block>
+<block blockType="Separator" blockName="" l="477" t="136" r="483" b="263"><region><rect l="479" t="136" r="483" b="184"/><rect l="478" t="184" r="482" b="186"/><rect l="479" t="186" r="483" b="188"/><rect l="478" t="188" r="482" b="240"/><rect l="477" t="240" r="481" b="263"/></region>
+<separator type="Black" thickness="4"><start x="136" y="800"/><end x="263" y="800"/>
+</separator>
+</block>
+<block blockType="Picture" blockName="" l="925" t="258" r="937" b="284"><region><rect l="925" t="258" r="937" b="284"/></region>
+</block>
+<block blockType="Picture" blockName="" l="633" t="329" r="642" b="354"><region><rect l="633" t="329" r="642" b="354"/></region>
+</block>
+<block blockType="Barcode" blockName="" l="332" t="302" r="597" b="430"><region><rect l="332" t="302" r="597" b="430"/></region>
+<text>
+<par><line baseline="0" l="0" t="0" r="0" b="0"><formatting lang="">032009^^81</formatting></line></par>
+</text>
+<barcodeInfo type="INTERLEAVED25"/>
+</block>
+</page>
+</document>
