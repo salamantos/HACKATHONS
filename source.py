@@ -91,8 +91,13 @@ def multi_thread_user_communication(user_id):
                 result = bot.send_message(chat_id, PHOTO_IS_IN_PROCESS).wait()
                 print result
                 da = get_info_by_url(bot, chat_id, user_id, get_photo_url(photo))
+                try:
+                    product_id = int(da[0].split()[2])
+                except:
+                    answer(log_file, bot, user_id, chat_id, da[0], reply_markup, del_msg=False)
+                    return
                 if da[0] is not None:
-                    last_product[user_id] = int(da[0].split()[2])
+                    last_product[user_id] = product_id
 
                 k = 0
                 for i in da:
@@ -108,7 +113,8 @@ def multi_thread_user_communication(user_id):
                         if i is not None:
                             answer(log_file, bot, user_id, chat_id, "Средняя оценка:" + u"🍔"*int(i), reply_markup, del_msg=False)
                     k+=1
-                reviews = db.get_reviews(last_product[user_id])
+
+                reviews = db.get_reviews(product_id)
                 if list(reviews) != []:
                     for r in reviews:
                         answer(log_file, bot, user_id, chat_id, "%s: %s\n\t%s" % (r.user_id, u"🍔"*r.rating, r.text), reply_markup, del_msg=False)
