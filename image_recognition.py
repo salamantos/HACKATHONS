@@ -27,8 +27,10 @@ def find_bar_code(xml_filename):
     soup = BeautifulSoup(xml_string, 'lxml')
     for i in soup.find_all('block'):
         if str(i).count('Barcode'):
-            return int(i.find('formatting').string)
-
+            try:
+                return int(i.find('formatting').string)
+            except:
+                return None
 
 def find_info(bar_code):
     r = requests.get(
