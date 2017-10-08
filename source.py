@@ -10,6 +10,7 @@ import threading
 import json
 import requests
 from image_recognition import get_info_by_url
+from db import Review
 
 # Включение бота
 reset_messages = raw_input('Reset messages? y/n\n')
@@ -58,6 +59,18 @@ def get_photo_url(photo):
     x = json.loads(res_req)
     return 'https://api.telegram.org/file/bot' + BOT_TOKEN + '/' + x['result']['file_path']
 
+#для хранения незаполненных отзывов между сообщениями
+last_product = {}
+review_stages = {}
+unfilled_reviews = {}
+
+def write_review(user_id):
+    unfilled_reviews[user_id].write_to_db()
+    del review_stages[user_id]
+    del unfilled_reviews[user_id]
+    del last_product[user_id]
+
+    
 
 def multi_thread_user_communication(user_id):
     print user_id
@@ -69,35 +82,66 @@ def multi_thread_user_communication(user_id):
         print personal_update
 
         if photo is not None:
-            result = bot.send_message(chat_id, PHOTO_IS_IN_PROCESS).wait()
-            print result
-            da = get_info_by_url(bot, chat_id, user_id, get_photo_url(photo))
-        else:
-            answer(log_file, bot, user_id, chat_id, PHOTO_IS_NONE, reply_markup, del_msg=False)
-            return
-        k = 0
-        for i in da:
-            if k == 0:
-                print i
-                if i is not None:
-                    answer(log_file, bot, user_id, chat_id, i, reply_markup, del_msg=False)
-                else:
-                    answer(log_file, bot, user_id, chat_id, "Мы не знаем что это :(", reply_markup, del_msg=False)
-                    return
-            elif k == 1:
-                print i
-                if i is not None:
-                    answer(log_file, bot, user_id, chat_id, "Средняя оценка \n" + i, reply_markup, del_msg=False)
-                else:
-                    return
+            if user_id in review_stages and review_stages[user_id] == "picture":
+                unfilled_reviews[user_id].image_id = photo.file_id
+                write_review(user_id)
+                answer(log_file, bot, user_id, chat_id, "Спасибо за отзыв!\n", reply_markup, del_msg=False)
             else:
-                print i
-                if i is not None:
-                    answer(log_file, bot, user_id, chat_id, "Всего отзывов\n" + i, reply_markup, del_msg=False)
-                else:
-                    return
-            k+=1
+                result = bot.send_message(chat_id, PHOTO_IS_IN_PROCESS).wait()
+                print result
+                da = get_info_by_url(bot, chat_id, user_id, get_photo_url(photo))
+                last_product[user_id] = int(da[0].split()[2])
 
+                k = 0
+                for i in da:
+                    if k == 0:
+                        print i
+                        if i is not None:
+                            answer(log_file, bot, user_id, chat_id, i, reply_markup, del_msg=False)
+                        else:
+                            answer(log_file, bot, user_id, chat_id, "Мы не знаем что это :(", reply_markup, del_msg=False)
+                            return
+                    elif k == 1:
+                        print i
+                        if i is not None:
+                            answer(log_file, bot, user_id, chat_id, "Средняя оценка \n" + i, reply_markup, del_msg=False)
+                    else:
+                        print i
+                        if i is not None:
+                            answer(log_file, bot, user_id, chat_id, "Всего отзывов\n" + i, reply_markup, del_msg=False)
+                            answer(log_file, bot, user_id, chat_id, "Оставить свой: /review\n", reply_markup, del_msg=False)
+                        else:
+                            answer(log_file, bot, user_id, chat_id, "Оставить первый отзыв: /review\n", reply_markup, del_msg=False)
+                    k+=1
+
+        else:
+            if text == "/review":
+                unfilled_reviews[user_id] = Review(user_id, last_product[user_id], None, None, None, None)
+                answer(log_file, bot, user_id, chat_id, "Ваша оценка:\n/star1\n/star2\n/star3\n/star4\n/star5\n", reply_markup, del_msg=False)
+                review_stages[user_id] = "rating"
+            elif user_id in review_stages:
+                if review_stages[user_id] == "rating":
+                    #exception possible 
+                    unfilled_reviews[user_id].rating = int(text[-1])
+                    answer(log_file, bot, user_id, chat_id, "Цена товара:\n", reply_markup, del_msg=False)
+                    review_stages[user_id] = "price"
+                elif review_stages[user_id] == "price":
+                    #exception possible
+                    unfilled_reviews[user_id].price = float(text)
+                    answer(log_file, bot, user_id, chat_id, "Отзыв:\n", reply_markup, del_msg=False)
+                    review_stages[user_id] = "text"
+                elif review_stages[user_id] == "text":
+                    unfilled_reviews[user_id].text = text
+                    answer(log_file, bot, user_id, chat_id, "Фотография:\n", reply_markup, del_msg=False)
+                    review_stages[user_id] = "picture"
+                    
+            else:
+                if user_id in review_stages:
+                    write_review(user_id)
+                    answer(log_file, bot, user_id, chat_id, "Спасибо за отзыв!\n", reply_markup, del_msg=False)
+                else:    
+                    answer(log_file, bot, user_id, chat_id, PHOTO_IS_NONE, reply_markup, del_msg=False)
+            return
     except ContinueError as exc_txt:
         answer(log_file, bot, user_id, chat_id, exc_txt.txt,
                reply_markup, del_msg=False)
