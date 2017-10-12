@@ -1,8 +1,0 @@
-.*
-*.pyc
-.idea
-test
-other
-logs
-secret_settings.py
-tmp
